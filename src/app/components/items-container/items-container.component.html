@@ -1,0 +1,10 @@
+<p *ngIf="loading" class="text-center mt-5">loading...</p>
+<ng-container *ngIf="!loading">
+  <div *ngFor="let item of arrayOfTasks; let i = index">
+    <app-items
+      (deleteItem)="deleteItem($event)"
+      [item]="item"
+      [index]="i"
+    ></app-items>
+  </div>
+</ng-container>

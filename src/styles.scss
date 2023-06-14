@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body{
+    // background-image: url(./assets/pexels-polina-kovaleva-5717458.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #9a2626;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
