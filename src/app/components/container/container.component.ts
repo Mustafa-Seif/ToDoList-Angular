@@ -1,12 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+export interface Task {
+  taskVal:string,
+  done:boolean
+}
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss']
 })
+
 export class ContainerComponent implements OnInit {
-  arrayOfTasks:string[]=[];
+  arrayOfTasks:Task[]=[];
   inputVal:any;
   checkVal:boolean=true;
   constructor(){};
@@ -19,7 +23,7 @@ export class ContainerComponent implements OnInit {
     // CHECK IF INPUT HAS VALUE 
     if (task.value) {
       // ADD THE TASK TO ARRAY  OF TASKS
-    this.arrayOfTasks.push(task.value)
+    this.arrayOfTasks.push({taskVal:task.value,done:false})
     // RESET INPUT VALUE 
     this.inputVal = '';
     // CHECK IF INPUT VALUE ADD TRUE
@@ -40,5 +44,14 @@ export class ContainerComponent implements OnInit {
   deleteAllTasks():void{
     this.arrayOfTasks.splice(0)
     localStorage.setItem('localTasks', JSON.stringify(this.arrayOfTasks));
+  }
+  changeStatus(index:number){
+  this.arrayOfTasks.forEach((item,i)=>{
+      if (i === index) {
+        item.done = !item.done 
+    localStorage.setItem('localTasks', JSON.stringify(this.arrayOfTasks));
+      }
+    })
+
   }
 }

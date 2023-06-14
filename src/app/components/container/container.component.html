@@ -17,7 +17,7 @@
         ADD
       </button>
     </form>
-    <app-items-container [arrayOfTasks]="arrayOfTasks" (taskDeletedEmitter)="deleteTask($event)"></app-items-container>
+    <app-items-container [arrayOfTasks]="arrayOfTasks" (changeStatusEmitter)="changeStatus($event)" (taskDeletedEmitter)="deleteTask($event)"></app-items-container>
     <button
       class="btn btn-danger mt-2"
       (click)="deleteAllTasks()"

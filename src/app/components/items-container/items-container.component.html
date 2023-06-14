@@ -3,6 +3,7 @@
   <div *ngFor="let item of arrayOfTasks; let i = index">
     <app-items
       (deleteItem)="deleteItem($event)"
+      (statusItem)="changeStutusItem($event)"
       [item]="item"
       [index]="i"
     ></app-items>

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Task } from '../container/container.component';
 
 @Component({
   selector: 'app-items',
@@ -7,12 +8,27 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ItemsComponent {
   @Output()deleteItem:EventEmitter<number> = new EventEmitter();
-  @Input()item:string='';
+  @Output()statusItem:EventEmitter<number> = new EventEmitter();
+  @Input()item?:Task;
   @Input()index:number=0;
-  completed:boolean=false;
+  itemStatus:boolean=false;
+
+  ngOnInit(): void {
+   this.itemStatus = this.item!.done;
+    
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    
+  }
   
   // SEND INDEX ITEM BY EVENTEMITTER 
   onDeleteItem(){
     this.deleteItem.emit(this.index)
+  }
+  changeStatus(){
+    this.statusItem.emit(this.index)
+    this.itemStatus = !this.itemStatus
+    this.item!.done = !this.item!.done;
   }
 }

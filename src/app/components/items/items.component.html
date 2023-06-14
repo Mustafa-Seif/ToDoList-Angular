@@ -2,15 +2,15 @@
   <div style="overflow: auto;" class="wrapper">
     <h5   
       style="margin-right: 20px"
-      [ngStyle]="{ 'text-decoration': completed ? 'line-through' : 'none' }"
-      >{{ item }}</h5
+      [ngStyle]="{ 'text-decoration': itemStatus ? 'line-through' : 'none' }"
+      >{{ item?.taskVal }}</h5
     >
     <div class="btn-container">
     <button
-      (click)="completed = !completed"
-      [ngClass]="!completed?'btn btn-success':'btn btn-warning'"
+      (click)="changeStatus()"
+      [ngClass]="!itemStatus?'btn btn-success':'btn btn-warning'"
     >
-      {{ !completed ? "Done" : "Undo" }}
+      {{ itemStatus ? "Undo" : "Done" }}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
